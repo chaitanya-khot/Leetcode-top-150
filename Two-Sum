@@ -1,0 +1,28 @@
+Bruteforce solution in Python:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for num1 in range(len(nums)):
+            for num2 in range(len(nums)):
+                if nums[num1] + nums[num2] == target and num1 != num2:
+                    return [num1, num2]
+        return []
+       
+Complexity
+Time complexity: O(N^2);
+Space Complexity: O(1);
+
+Optimal solution in Python:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashMap = {} # value : index
+
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in hashMap:
+                return [hashMap[diff], i]
+            hashMap[n] = i
+        return
+        
+Complexity
+Time complexity: O(N);
+Space Complexity: O(N);
