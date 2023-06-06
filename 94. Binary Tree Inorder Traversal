@@ -1,0 +1,44 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
+        def inorder(root):
+            if not root:
+                return
+            inorder(root.left)
+            ans.append(root.val)
+            inorder(root.right)
+        inorder(root)
+        return ans
+        
+        
+Time complexity : O(n)
+Space complexity : O(n)
+
+# We can also implement this using stack (iteration) instead of recursion. For this, we use a pointer to point at the current value from the stack.
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
+        stack = []
+        ptr = root
+        
+        while stack or ptr:
+            while ptr:
+                stack.append(ptr)
+                ptr = ptr.left
+            ptr = stack.pop()
+            ans.append(ptr.val)
+            ptr = ptr.right
+        return ans
