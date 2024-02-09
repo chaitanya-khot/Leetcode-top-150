@@ -14,7 +14,7 @@ class Solution:
             if left != right:
                 return False
             
-            x = (x % 10) // 10
+            x = (x % div) // 10
             div = div / 100
         return True
             
