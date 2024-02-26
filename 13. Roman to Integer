@@ -22,3 +22,18 @@ class Solution:
 
 ''' The above solution 2 converts each letter of the string to a list and we then iterate through the list from the last element.
 We then check if the element before it is larger or smaller than our element to subtract or add our element to the result and return the sum'''
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        res = 0
+        roman = {"I" : 1, "V" : 5, "X" : 10, "L" : 50, "C" : 100, "D" : 500, "M" : 1000}
+        for i in range(len(s)):
+            if i + 1 < len(s) and roman[s[i]] < roman[s[i + 1]]:
+                res -= roman[s[i]]
+            else:
+                res += roman[s[i]]
+        return res
+		
+''' The above solution 3 is similar to solution 2. 
+The main difference is that solution 3 iterates through the whole string from the first element. 
+It also does not convert the string to a list. Just a clear alternative solution to the solution 2 provided before.'''
