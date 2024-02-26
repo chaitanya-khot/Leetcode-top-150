@@ -4,5 +4,21 @@ class Solution:
         s = s.replace("IV", "IIII").replace("IX", "VIIII").replace("XL", "XXXX").replace("XC", "LXXXX").replace("CD", "CCCC").replace("CM", "DCCCC")
         return sum(map(lambda x: nums[x], s))
         
-Time Complexity: O(n)
-Space Complexity: O(1)
+'''Time Complexity: O(n)
+Space Complexity: O(1)'''
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        roman = s.strip("")
+        convert = {"I" : 1, "V" : 5, "X" : 10, "L" : 50, "C" : 100, "D" : 500, "M" : 1000}
+        num = convert[roman[len(roman) - 1]]
+        for letter in range(len(roman) - 2, -1, -1):
+            if convert[roman[letter]] < convert[roman[letter + 1]]:
+                num -=convert[roman[letter]]
+            else:
+                num += convert[roman[letter]]
+
+        return num
+
+''' The above solution 2 converts each letter of the string to a list and we then iterate through the list from the last element.
+We then check if the element before it is larger or smaller than our element to subtract or add our element to the result and return the sum'''
