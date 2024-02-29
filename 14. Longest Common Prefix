@@ -20,3 +20,18 @@ class Solution:
                 return ans
             ans+=first[i]
         return ans 
+
+# Below is a good initial solution that compares all the words along with their common element one by one. 
+# But this solution didn't solve all the test cases
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        k = 0
+        res = ''
+        if len(strs) == 0 or len(strs) == 1:
+            res = strs[0]
+        for i in range(len(strs) - 1):
+            if strs[i][k] == strs[-1][k]:
+                res = res + strs[i][k]
+                k += 1
+        return res
