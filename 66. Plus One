@@ -1,0 +1,13 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        n, power = len(digits), 0
+        ans = 0
+        for i in range(n - 1, -1, -1):
+            num = digits[i] * (10 ** power)
+            ans += num
+            power += 1
+        ans += 1
+        res = [int(digit) for digit in str(ans)]
+        return res
+
+# The above solution uses a bruteforce approach where we convert the whole list as a number, add 1 to it and return it back as a list of digits
