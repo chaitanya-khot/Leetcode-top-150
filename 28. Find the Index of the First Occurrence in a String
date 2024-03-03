@@ -12,4 +12,16 @@ class Solution:
         return -1
 
 # Time complexity = O (m * n)
-# Space complexity = O(1)
+# Space complexity = O (1)
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if needle == "":
+            return 0
+
+        for i in range(len(haystack) + 1 - len(needle)):
+            if haystack[i: i + len(needle)] == needle:
+                    return i           
+        return -1
+
+# The above solution has the nested loop in the if condition. It is in case the first solution gives a time exceeded error
