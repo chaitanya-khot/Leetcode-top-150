@@ -11,4 +11,5 @@ class Solution:
                     return i           
         return -1
 
-# Time complexity O (m . n)
+# Time complexity = O (m * n)
+# Space complexity = O(1)
