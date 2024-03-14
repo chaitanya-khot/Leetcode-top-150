@@ -1,11 +1,11 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        pairs, ans = {}, []
-        for num in range(len(nums)):
-            if len(pairs) <= len(nums):
-                pairs[nums[num]] = target - nums[num]
-    
-        for num in pairs.values():
-            if num in nums and pairs[num] != num:
-                ans.append(nums.index(num))
-        return ans[::-1]
+        prevMap = {} # val : index
+
+        # when we need both the index and the values of a list, tuple or a string
+        for i, n in enumerate(nums): # enumerate function returns (index : value) pairs
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
+        return
