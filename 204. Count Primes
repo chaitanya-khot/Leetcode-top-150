@@ -1,0 +1,46 @@
+Python solution: 
+
+class Solution:
+    def countPrimes(self, n: int) -> int:
+        prime = [True for i in range(n)]
+        count = 0
+        p = 2
+        while (p * p <= n):
+            if (prime[p] == True):
+                for i in range(p * p, n, p):
+                    prime[i] = False
+            p += 1
+    
+        for p in range(2, n):
+            if prime[p]:
+                count += 1
+        return count
+
+Java solution:
+
+class Solution {
+    public int countPrimes(int n) {
+        if (n <= 2) return 0; // checking for 0 and 1
+        boolean[] composites = new boolean[n];
+        int limit = (int)Math.sqrt(n);
+
+        // Array of composites --> True represents composite and False represents primes
+        for (int i = 2; i <= limit; i++){
+            if(composites[i] == false){
+                // mark all the multiples of i as true
+                // the first indec to be flipped to true is i*i
+                for(int j = i*i; j < n; j+= i){
+                    composites[j] = true;
+                }
+            }
+        }
+
+        int count = 0;
+        for (int i = 2; i < n; i++){
+            if(composites[i] == false) count++;
+        }
+
+        return count;
+    }
+}
+        
